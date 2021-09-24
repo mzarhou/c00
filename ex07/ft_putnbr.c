@@ -16,27 +16,16 @@ void	ft_putnbr(int nb);
 
 void	ft_putnbr(int nb)
 {
-	int	result;
-	int	number_of_digit;
-	char
-		ch;
-	int	oldval ;
-	int	i;
+	char	c;
 
-	result = (int) nb / 10;
-	oldval = 0;
-	number_of_digit = 0;
-	i = number_of_digit;
-	while (result > 0)
+	if (nb < 10)
 	{
-		number_of_digit++;
-		result = result / 10;
+		c = nb + '0';
+		write(1, &c, 1);
 	}
-	while (i >= 0)
+	if (nb > 9)
 	{
-		ch = (nb / (int)pow(10, i) - oldval * 10) + '0';
-		oldval = nb / (int)pow(10, i);
-		write(1, &ch, 1);
-		i--;
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
 	}
 }
