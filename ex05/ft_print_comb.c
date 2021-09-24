@@ -1,19 +1,63 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_comb.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzarhou <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/24 10:22:21 by mzarhou           #+#    #+#             */
+/*   Updated: 2021/09/24 10:22:24 by mzarhou          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-void ft_print_comb() {
-    int showComma = 0;
+void	ft_print_comb(void);
+void	print(int show_comma, char a, char b, char c);
+void	show(char c, char d, char e, int show_comma);
 
-    for (char c = '0'; c <= '9'; c++) {
-        for (char d = c + 1; d <= '9'; d++) {
-            for (char e = d + 1; e <= '9'; e++) {
-                if (showComma) {
-                    write(1, ", ", 2);
-                }
-                write(1, &c, 1);
-                write(1, &d, 1);
-                write(1, &e, 1);
-                showComma = 1;
-            }
-        }
-    }
+void	ft_print_comb(void)
+{
+	int	show_comma;
+	char
+		c;
+	char
+		d;
+	char
+		e;
+
+	show_comma = 0;
+	c = '0';
+	show(c, d, e, show_comma);
+}
+
+void	show(char c, char d, char e, int show_comma)
+{
+	while (c <= '9')
+	{
+		d = c + 1;
+		while (d <= '9')
+		{
+			e = d + 1;
+			while (e <= '9')
+			{
+				print(show_comma, c, d, e);
+				show_comma = 1;
+				e++;
+			}
+			d++;
+		}
+		c++;
+	}
+}
+
+void	print(int show_comma, char a, char b, char c)
+{
+	if (show_comma)
+	{
+		write(1, ", ", 2);
+	}
+	write(1, &a, 1);
+	write(1, &b, 1);
+	write(1, &c, 1);
 }
