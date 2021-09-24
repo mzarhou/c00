@@ -12,11 +12,11 @@
 
 #include <unistd.h>
 
-void	ft_print_comb(void);
+void	ft_print_comb2(void);
 void	show(char c, char d, char e, char f);
 void	print(char c, char d, char e, char f);
 
-void	ft_print_comb(void)
+void	ft_print_comb2(void)
 {
 	char
 		c;
@@ -28,6 +28,9 @@ void	ft_print_comb(void)
 		f;
 
 	c = '0';
+	d = '0';
+	e = '0';
+	f = d + 1;
 	show(c, d, e, f);
 }
 

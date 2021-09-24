@@ -13,8 +13,9 @@
 #include <unistd.h>
 
 void	ft_putnbr(int nb);
+void	put_int(int nb);
 
-void	ft_putnbr(int nb)
+void	put_int(int nb)
 {
 	char	c;
 
@@ -27,5 +28,18 @@ void	ft_putnbr(int nb)
 	{
 		ft_putnbr(nb / 10);
 		ft_putnbr(nb % 10);
+	}
+}
+
+void	ft_putnbr(int nb)
+{
+	if (nb < 0)
+	{
+		write(1, "-", 1);
+		put_int(-nb);
+	}
+	else
+	{
+		put_int(nb);
 	}
 }

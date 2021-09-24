@@ -28,6 +28,8 @@ void	ft_print_comb(void)
 
 	show_comma = 0;
 	c = '0';
+	d = c + 1;
+	e = d + 1;
 	show(c, d, e, show_comma);
 }
 
