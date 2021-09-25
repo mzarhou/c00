@@ -11,35 +11,36 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <limits.h>
 
 void	ft_putnbr(int nb);
-void	put_int(int nb);
+void	put_char(char c);
 
-void	put_int(int nb)
+void	put_char(char c)
 {
-	char	c;
-
-	if (nb < 10)
-	{
-		c = nb + '0';
-		write(1, &c, 1);
-	}
-	if (nb > 9)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
+	write(1, &c, 1);
 }
 
 void	ft_putnbr(int nb)
 {
-	if (nb < 0)
+	if (nb == INT_MIN)
 	{
-		write(1, "-", 1);
-		put_int(-nb);
+		put_char('-');
+		put_char('2');
+		ft_putnbr(147483648);
+	}
+	else if (nb < 0)
+	{
+		put_char('-');
+		ft_putnbr(-nb);
+	}
+	else if (nb < 10)
+	{
+		put_char(nb + '0');
 	}
 	else
 	{
-		put_int(nb);
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
 	}
 }

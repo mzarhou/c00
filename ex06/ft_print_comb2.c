@@ -12,66 +12,44 @@
 
 #include <unistd.h>
 
+void	print_char(char c);
+void	ft_print_numbers(int a, int b);
 void	ft_print_comb2(void);
-void	show(char c, char d, char e, char f);
-void	print(char c, char d, char e, char f);
 
-void	ft_print_comb2(void)
+void	print_char(char c)
 {
-	char
-		c;
-	char
-		d;
-	char
-		e;
-	char
-		f;
-
-	c = '0';
-	d = '0';
-	e = '0';
-	f = d + 1;
-	show(c, d, e, f);
+	write(1, &c, 1);
 }
 
-void	show(char c, char d, char e, char f)
+void	ft_print_numbers(int a, int b)
 {
-	while (c <= '9')
+	print_char(a / 10 + '0');
+	print_char(a % 10 + '0');
+	print_char(' ');
+	print_char(b / 10 + '0');
+	print_char(b % 10 + '0');
+	if (a != 98 || b != 99)
 	{
-		d = '0';
-		while (d <= '9')
-		{
-			e = c;
-			while (e <= '9')
-			{
-				f = d + 1;
-				while (f <= '9')
-				{
-					print(c, d, e, f);
-					f++;
-				}
-				e++;
-			}
-			d++;
-		}
-		c++;
+		print_char(',');
+		print_char(' ');
 	}
 }
 
-void	print(char c, char d, char e, char f)
+void	ft_print_comb2(void)
 {
-	int	stop;
-	int	max;
+	int	a;
+	int	b;
 
-	max = '9' + '8' + '9' + '9';
-	stop = (c + d + e + f) >= max;
-	write(1, &c, 1);
-	write(1, &d, 1);
-	write(1, " ", 1);
-	write(1, &e, 1);
-	write(1, &f, 1);
-	if (!stop)
+	a = 0;
+	b = 1;
+	while (a <= 98)
 	{
-		write(1, ", ", 2);
+		b = a + 1;
+		while (b <= 99)
+		{
+			ft_print_numbers(a, b);
+			b++;
+		}
+		a++;
 	}
 }
